@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+  {{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+  {% include 'snippets/navbar_restoran.html' %}
+  <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card my-5" style="height:292px">
+              <div class="card-body shadow p-3 mb-5 bg-white rounded">
+                  <h5 class="card-title text-center">{{page_title}}</h5>
+                  <form style="width:100%" method="post">
+                      {% csrf_token %}
+                      <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" name="username" id="username">
+                      </div>
+                      <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" id="password">
+                      </div>
+                      <button type="submit" class="btn btn-primary mt-3">Login</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+{% endblock contents %}

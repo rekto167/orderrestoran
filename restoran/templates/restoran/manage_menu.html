@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}
+  {{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+  {% include "snippets/navbar_restoran_chef.html" %}
+  <h1>{{page_title}}</h1>
+  <a class="btn btn-primary" href="{% url 'restoran:tambahmenu' %}"><img src="{% static 'vendor/img/plus-square.svg' %}" alt=""></a>
+  <div class="container mt-3">
+    <div class="row">
+        {% for menu in ObjectMenuManage %}
+          <div class="card float-left" style="width: 15rem; height: 22rem; margin-right: 10px">
+            {% if menu.img_menu %}
+              <img class="card-img-top mx-auto mt-2 " src="{{menu.img_menu.url}}" alt="{{menu.img_menu}}" style="width: 10rem; height:10rem">
+            {% else %}
+              <img class="card-img-top mx-auto mt-2 " src="{% static 'vendor/img/default.png' %}" alt="{{menu.image_menu}}" style="width: 10rem; height:10rem">
+            {% endif %}
+              
+            <div class="card-body">
+              <h3 class="card-text text-center">{{menu.name_menu}}</h3>
+              <div class="container mt-2">
+                <img src="{% static 'vendor/img/tags.svg' %}" style="width:20px; height:20px">
+                <span class="text-danger text-center font-weight-bold">{{menu.price_menu}}</span>
+              </div>
+                <a class="badge bg-warning" href=""><span class="oi" data-glyph="icon-name" title="icon name" aria-hidden="true"><img src="{% static 'vendor/img/pencil-square.svg' %}" alt=""></a>
+                <a class="badge bg-danger mt-3" href="{% url 'restoran:hapusmenu' menu.id %}"><span class="oi" data-glyph="icon-name" title="icon name" aria-hidden="true"><img src="{% static 'vendor/img/trash-fill.svg' %}" style="color:white" alt=""></a>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+{% endblock contents %}

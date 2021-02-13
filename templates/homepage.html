@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+  {{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+{% include "snippets/navbar_ordermenu.html" %}
+<div class="container text-center">
+  <h1>Welcome to Website</h1>
+  <h3>RENAL EKI RIYANTO</h3>
+  <a class="btn btn-dark mt-5" href="{% url 'about' %}">MORE</a>
+</div>
+{% endblock contents %}

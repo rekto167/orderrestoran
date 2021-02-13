@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}
+  {{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+  {% include "snippets/navbar_restoran_chef.html" %}
+  <h1>{{page_title}}</h1>
+  <div class="container">
+    <div class="row">
+        {% for orderan in order %}
+          <div class="card float-left" style="width: 15rem; height: 22rem; margin-right: 10px">
+            <div class="card-body">
+              <h3 class="card-title text-center">{{orderan.name_product.name_menu}}</h3>
+              <div class="container text-center">
+                <h3>{{orderan.quantity}}</h3>
+                <h4>{{orderan.total_price}}</h4>
+                <p>{{orderan.id}}</p>
+              </div>
+            </div>
+            <a class="badge btn-info" type="submit" href="{% url 'restoran:ordercomplete' orderan.id %}"><img src="{% static 'vendor/img/bag-check.svg' %}" alt="" style="width:30px"></a>
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+{% endblock contents %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}
+  {{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+  {% include "snippets/navbar_restoran_customer.html" %}
+  <h1>{{page_title}}</h1>
+  <form action="" method="post">
+    {% csrf_token %}
+    {{formset.management_form}}
+    <div class="container mt-3">
+      <div class="row">
+          {% for menu in ObjectListMenu %}
+          
+            <div class="card float-left mt-3" style="width: 15rem; height: 22rem; margin-right: 10px">
+              
+              {% if menu.img_menu %}
+                <img class="card-img-top mx-auto mt-2 " src="{{menu.img_menu.url}}" alt="{{menu.img_menu}}" style="width: 10rem; height:10rem">
+              {% else %}
+                <img class="card-img-top mx-auto mt-2 " src="{% static 'vendor/img/default.png' %}" alt="{{menu.image_menu}}" style="width: 10rem; height:10rem">
+              {% endif %}
+                
+              <div class="card-body">
+                <h3 class="card-text text-center">{{menu.name_menu}}</h3>
+                <div class="container mt-2">
+                  <img src="{% static 'vendor/img/tags.svg' %}" style="width:20px; height:20px">
+                  <span class="text-danger text-center font-weight-bold">{{menu.price_menu}}</span>
+                </div>
+                <div class="container">
+                  <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="input-group input-group-sm mb-3 mt-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Qty</span>
+                      </div>
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="quantity" >
+                      <button class="btn btn-warning" type="submit"><img src="{% static 'vendor/img/cart.svg' %}" style="width:20px" ></button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+      </div>
+    </div>
+  </form>
+{% endblock contents %}
+
+{% block script_tambahan %}
+  {% static "vendor/incdec.js" %}
+{% endblock script_tambahan %}

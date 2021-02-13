@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+  {{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+  <h1>Konfirmasi Pesanan Siap Disantap</h1>
+  <p>Apakah Pesanan Benar Siap ?</p>
+  <form action="" method="post">
+    {% csrf_token %}
+    <button class="btn btn-success" type="submit" name="submit">iya dong</button>
+  </form>
+{% endblock contents %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}
+  {{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+{% include "snippets/navbar_ordermenu.html" %}
+<div class="container">
+    <h2>About</h2>
+    <img src="{% static 'vendor/img/renaleki.png' %}"  class="rounded-circle" alt="" style="width: 200px; height:200px">
+    <table class="table mt-3">
+      <tbody>
+        <tr>
+          <th scope="row">Name Lengkap</th>
+          <td>Renal Eki Riyanto</td>
+        </tr>
+        <tr>
+          <th scope="row">No. BP</th>
+          <td>17101152620039</td>
+        </tr>
+        <tr>
+          <th scope="row">Kelas</th>
+          <td>SK-1</td>
+        </tr>
+        <tr>
+          <th scope="row">Jurusan</th>
+          <td>Sistem Komputer</td>
+        </tr>
+        <tr>
+          <th scope="row">Fakultas</th>
+          <td>Ilmu Komputer</td>
+        </tr>
+        <tr>
+          <th scope="row">Judul Skripsi</th>
+          <td>Perancangan dan Bangun Miniatur Sistem Pemesanan Menu Restoran Berbasis Website Python Django dengan Raspberry Pi</td>
+        </tr>
+        <tr>
+          <th scope="row">Perguruan Tinggi</th>
+          <td>Universitas Putra Indonesia YPTK Padang</td>
+        </tr>
+      </tbody>
+    </table>
+{% endblock contents %}

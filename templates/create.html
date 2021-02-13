@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}
+  Tambah Akun
+{% endblock page_title %}
+
+{% block contents %}
+  {% include "snippets/navbar_restoran_customer.html" %}
+  <h1>Tambah Akun</h1>
+  <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+        <div class="form-group">
+            <label for="{{form.name_menu.id_for_label}}">{{form.name_menu.label}}:</label>
+            <input type="text" class="form-control" name="{{form.name_menu.name}}" maxlength="{{form.name_menu.max}}" required id="{{form.name_menu.id_for_label}}">    
+        </div>
+
+        <!-- <div class="form-group">
+            <label for="{{form.img_menu.id_for_label}}">{{form.img_menu.label}}:</label>
+            <input type="file" name="{{form.img_menu.name">
+        </div> -->
+        <div class="form-group">
+            <label for="{{field.auto_id}}">{{field.label}} </label>
+            <input type="file" name="{{form.img_menu.name}}">
+        </div>
+
+        <div class="form-group">
+            <label for="{{form.cat_menu.id_for_label}}">{{form.cat_menu.label}}:</label>
+            <input type="text" class="form-control" name="{{form.cat_menu.name}}" maxlength="{{form.cat_menu.max}}" required id="{{form.cat_menu.id_for_label}}">    
+        </div>
+
+        <div class="form-group">
+            <label for="{{form.price_menu.id_for_label}}">{{form.price_menu.label}}:</label>
+            <input type="text" class="form-control" name="{{form.price_menu.name}}" maxlength="{{form.price_menu.max}}" required id="{{form.price_menu.id_for_label}}">    
+        </div>
+
+
+        <button type="submit" class="btn btn-primary mt-3">Tambah</button>
+        <a class="btn btn-danger mt-3" href="{% url 'restoran:managemenu' %}">Batal</a>
+  </form>
+{% endblock contents %}
